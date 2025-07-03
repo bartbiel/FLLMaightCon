@@ -7,6 +7,7 @@ from langchain.chains import ConversationalRetrievalChain
 from pathlib import Path
 import torch
 import sys
+import re  # Added for regex parsing
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 import grants
@@ -73,13 +74,19 @@ rag_chain = ConversationalRetrievalChain.from_llm(
 
 
 def extract_city_code_and_name(doc_text):
-    city_code, name = None, None
-    lines = doc_text.split("\n")
-    for line in lines:
-        if "CityCode" in line:
-            city_code = line.split(":", 1)[1].strip()
-        elif "Name" in line:
-            name = line.split(":", 1)[1].strip()
+    city_code = None
+    name = None
+
+    # Regex to extract city_code and name, case insensitive
+    city_code_match = re.search(r"city_code:\s*([^\s]+)", doc_text, re.IGNORECASE)
+    name_match = re.search(r"name:\s*([^\n\r]+?)(?:\s+\w+?:|$)", doc_text, re.IGNORECASE)
+
+    if city_code_match:
+        city_code = city_code_match.group(1).strip()
+
+    if name_match:
+        name = name_match.group(1).strip()
+
     return city_code, name
 
 
