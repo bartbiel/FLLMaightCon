@@ -12,12 +12,17 @@ def get_flights_data_around_point(lat, lon, radius):
     :param radius: Radius in meters to search for flights.
     :return: List of flights data.
     """
+    result=[]
     bounds = fr_api.get_bounds_by_point(lat, lon, radius)
     flights = fr_api.get_flights(bounds=bounds)
     for flight in flights:
-        print(f"{flight.callsign}: {flight.origin_airport_iata} → {flight.destination_airport_iata}")
-    print(f"flights = {len(flights)}")
+        if len(flight.destination_airport_iata) !=0:
+            print(f"destination = {flight.destination_airport_iata} length = {len(flight.destination_airport_iata)}")
+            result.append(flight)
+        #print(f"{flight.callsign}: {flight.origin_airport_iata} → {flight.destination_airport_iata}")
+    #print(f"flights = {len(flights)}")
     #flight.
+    return result
 
 def get_flights_to_destination_near_point(lat, lon, radius_m, destination_code):
     #this does not work, due to destination_airport_iata not being available in the FlightRadar24API
@@ -43,6 +48,8 @@ def get_flights_to_destination_near_point(lat, lon, radius_m, destination_code):
     except Exception as e:
         print(f"Error: {e}")
     return result
+
+
     
 
 def get_flight_details_by_callsign(lat, lon, radius_m, callsign):
