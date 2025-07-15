@@ -179,8 +179,24 @@ def airport_selection(typeOf: str):
                 print("Invalid number. Please choose from the list.")
 
 
-def final_airport_data(typeOf: str):
-    res = airport_selection(typeOf)
-    #if res:
-        #print(f"Selected {typeOf.capitalize()} Airport: {res['name']} ({res['code']}) at {res['latitude']}, {res['longitude']}")
-    return res
+def select_callsign_from_flights(callsign_list, destination):
+    if not callsign_list:
+        print("No flights found.")
+        return None
+
+    print(f"Available flights to {destination}:")
+    for idx, cs in enumerate(callsign_list):
+        print(f"{idx + 1}. {cs}")
+
+    try:
+        choice = int(input("Select a flight by number: ")) - 1
+        if 0 <= choice < len(callsign_list):
+            selected_callsign = callsign_list[choice]
+            print(f"You selected: {selected_callsign}")
+            return selected_callsign
+        else:
+            print("Invalid selection.")
+            return None
+    except ValueError:
+        print("Please enter a valid number.")
+        return None
