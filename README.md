@@ -34,7 +34,7 @@ airfieldsRAG.py adds airfields data with FAISS
 <br>JSON results from the entire flight tracking <a href="./backend/JSONS/FIN73P.json" > here</a>
 <h1>The Results</h1>
 <ul>
-  <li>Mistral 7B downloaded from Hugingface and installed locally
+  <li>Mistral 7B downloaded from Huggingface and installed locally
   <li>Mistral 7B running locally on the PC.</li>
   <li>RAG with Airfields data employed and stored locally using FAISS.</li>
   <li>Unofficial SDK for FlightRadar24 API is used.</li>
