@@ -1,6 +1,6 @@
 from FlightRadar24 import FlightRadar24API
 
-def test_flight_details(lat, lon, radius, destination, callsign):
+def get_flight_details(lat, lon, radius,  callsign):
     fr_api = FlightRadar24API()
     result=[]
     fields = [
@@ -21,11 +21,11 @@ def test_flight_details(lat, lon, radius, destination, callsign):
     bounds = fr_api.get_bounds_by_point(lat, lon, radius)
     flights = fr_api.get_flights(bounds=bounds)
     for f in flights:
-        if (len(f.destination_airport_iata) !=0 and f.destination_airport_iata == destination and f.callsign == callsign):
+        if (len(f.destination_airport_iata) !=0 and f.callsign == callsign):
             flight_info = {
                 field: value for field in fields
                 if (value := getattr(f, field, None)) is not None
             }
             result.append(flight_info)
-    print(result)
+    #print(result)
     return result

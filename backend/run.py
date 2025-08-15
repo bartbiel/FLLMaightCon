@@ -1,6 +1,6 @@
 from consoleChat import airport_selection, select_callsign_from_flights
 from FlightRadar import get_flights_data_around_point, get_flights_to_destination_near_point, get_flight_details_by_callsign
-from testFlightDetails import test_flight_details
+
 
 
 departure_data= airport_selection("departure")
@@ -30,4 +30,4 @@ callsign = get_flights_to_destination_near_point(departure_latitude, departure_l
 print(f"Details for flight {callsign}:")
 selected_flight= select_callsign_from_flights(callsign, destination)
 print(f"Selected flight: {selected_flight}")
-test_flight_details(departure_latitude, departure_longitude, distanceInKM*1000, destination, selected_flight)
+#test_flight_details(departure_latitude, departure_longitude, distanceInKM*1000, destination, selected_flight)

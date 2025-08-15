@@ -1,0 +1,32 @@
+[
+  {
+    "altitude": 7450,
+    "ground_speed": 277,
+    "heading": 268,
+    "latitude": 52.033,
+    "longitude": 20.806,
+    "on_ground": 0,
+    "squawk": "",
+    "time": 1755262240
+  },
+  {
+    "altitude": 7450,
+    "ground_speed": 277,
+    "heading": 268,
+    "latitude": 52.033,
+    "longitude": 20.806,
+    "on_ground": 0,
+    "squawk": "",
+    "time": 1755262240
+  },
+  {
+    "altitude": 17050,
+    "ground_speed": 356,
+    "heading": 253,
+    "latitude": 51.983,
+    "longitude": 20.148,
+    "on_ground": 0,
+    "squawk": "",
+    "time": 1755262517
+  }
+]
